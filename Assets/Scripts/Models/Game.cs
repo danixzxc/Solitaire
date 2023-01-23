@@ -287,7 +287,7 @@ namespace Solitaire.Models
 
                     if (j == i)
                     {
-                        topCard.Flip();
+                        //topCard.Flip();
                     }
 
                     await UniTask.DelayFrame(3);

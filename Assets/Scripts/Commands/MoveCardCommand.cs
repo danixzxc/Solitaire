@@ -59,8 +59,7 @@ namespace Solitaire.Commands
             // Reveal card below if needed
             Card cardBelow = _pileSource.TopCard();
 
-            if (_pileSource.IsTableau &&
-                cardBelow != null && !cardBelow.IsFaceUp.Value)
+            if (cardBelow != null && !cardBelow.IsFaceUp.Value)
             {
                 cardBelow.Flip();
                 _wasTopCardFlipped = true;

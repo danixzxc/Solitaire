@@ -83,13 +83,7 @@ namespace Solitaire.Models
                     return false;
 
                 case PileType.Foundation:
-                    if (topCard == null && card.Type == Card.Types.Ace)
-                    {
-                        return true;
-                    }
-
-                    if (topCard != null && topCard.Suit == card.Suit &&
-                        topCard.Type == card.Type - 1 && card.IsOnTop)
+                    if (topCard == null)
                     {
                         return true;
                     }
@@ -97,7 +91,7 @@ namespace Solitaire.Models
                     return false;
 
                 case PileType.Tableau:
-                    if (topCard == null && card.Type == Card.Types.King)
+                    if (topCard == null)
                     {
                         return true;
                     }

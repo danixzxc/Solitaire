@@ -25,11 +25,6 @@ namespace Solitaire.Models
 
         public enum Types : byte
         {
-            Ace,
-            Two,
-            Three,
-            Four,
-            Five,
             Six,
             Seven,
             Eight,
@@ -77,10 +72,11 @@ namespace Solitaire.Models
             Type = type;
         }
 
+
         public void Reset(Vector3 position)
         {
             Pile = null;
-            IsFaceUp.Value = false;
+            IsFaceUp.Value = true;
             Position.Value = position;
             Order.Value = 0;
             Alpha.Value = 1f;
@@ -101,11 +97,11 @@ namespace Solitaire.Models
                 return 10;
             }
 
-            if (Type == Types.Ace)
+           /* if (Type == Types.Ace)
             {
                 return 11;
             }
-
+           */
             return (int)Type + 1;
         }
 
