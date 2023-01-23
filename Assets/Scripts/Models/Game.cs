@@ -156,9 +156,9 @@ namespace Solitaire.Models
 
                 for (int j = 0; j < pileTableau.Cards.Count; j++)
                 {
-                    if (!pileTableau.Cards[j].IsFaceUp.Value)
+                    if (pileTableau.Cards[j].IsFaceUp.Value)
                     {
-                        return;
+                        return; //all cards should be FACED DOWN to win in this version
                     }
                 }
             }
@@ -280,7 +280,7 @@ namespace Solitaire.Models
             // Deal cards to the Tableau piles
             for (int i = 0; i < PileTableaus.Count; i++)
             {
-                for (int j = 0; j < i + 1; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     Card topCard = PileStock.TopCard();
                     PileTableaus[i].AddCard(topCard);
