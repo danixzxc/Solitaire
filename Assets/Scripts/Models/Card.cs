@@ -37,11 +37,11 @@ namespace Solitaire.Models
 
         public Suits Suit { get; private set; }
         public Types Type { get; private set; }
-        public BoolReactiveProperty IsFaceUp { get; private set; }
+        public BoolReactiveProperty IsFaceUp { get;  set; }
         public Vector3ReactiveProperty Position { get; private set; }
         public IntReactiveProperty Order { get; private set; }
         public FloatReactiveProperty Alpha { get; private set; }
-        public BoolReactiveProperty IsVisible { get; private set; }
+        public BoolReactiveProperty IsVisible { get;  set; }
         public BoolReactiveProperty IsInteractable { get; private set; }
 
         public Pile Pile { get; set; }
@@ -50,10 +50,13 @@ namespace Solitaire.Models
         public int OrderToRestore { get; set; }
         public bool IsDragged { get; set; }
 
+        public bool IsInStack { get; set; }
+
         public bool IsInPile => Pile != null;
         public bool IsOnBottom => Pile.BottomCard() == this;
         public bool IsOnTop => Pile.TopCard() == this;
-        public bool IsMoveable => IsInPile && ((Pile.IsWaste && IsOnTop && IsFaceUp.Value) || (!Pile.IsWaste && IsFaceUp.Value));
+        //public bool IsMoveable => IsInPile && ((Pile.IsWaste && IsOnTop && IsFaceUp.Value) || (!Pile.IsWaste && IsFaceUp.Value));
+        public bool IsMoveable => IsInPile && IsInStack;
         public bool IsDrawable => IsInPile && Pile.IsStock && IsOnTop && !IsFaceUp.Value;
 
         public Card()
@@ -96,12 +99,6 @@ namespace Solitaire.Models
             {
                 return 10;
             }
-
-           /* if (Type == Types.Ace)
-            {
-                return 11;
-            }
-           */
             return (int)Type + 1;
         }
 

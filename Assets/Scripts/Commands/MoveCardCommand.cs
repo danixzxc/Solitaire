@@ -65,7 +65,10 @@ namespace Solitaire.Commands
                 _wasTopCardFlipped = true;
                 _pointsService.Add(_gameConfig.PointsTurnOverTableauCard);
             }
-        }
+
+            
+
+            }
 
         public void Undo()
         {

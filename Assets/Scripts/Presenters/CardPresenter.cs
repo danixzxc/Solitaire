@@ -199,7 +199,7 @@ namespace Solitaire.Presenters
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (_card.IsMoveable)
+            if (_card.IsMoveable )
             {
                 _dndHandler.Drag(eventData);
             }

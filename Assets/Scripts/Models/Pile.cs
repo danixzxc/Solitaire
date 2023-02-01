@@ -21,7 +21,7 @@ namespace Solitaire.Models
         }
 
         public PileType Type { get; private set; }
-        public CardArrangement Arrangement { get; private set; }
+        public CardArrangement Arrangement { get; set; }
         public Vector3 Position { get; private set; }
         public List<Card> Cards { get; private set; }
 
