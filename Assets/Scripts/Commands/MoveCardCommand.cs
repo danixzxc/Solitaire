@@ -33,26 +33,6 @@ namespace Solitaire.Commands
                 _pileTarget.AddCards(cards);
             }
 
-            // Scoring
-            if (_pileSource.IsWaste)
-            {
-                if (_pileTarget.IsTableau)
-                {
-                    _pointsService.Add(_gameConfig.PointsWasteToTableau);
-                }
-                else if (_pileTarget.IsFoundation)
-                {
-                    _pointsService.Add(_gameConfig.PointsWasteToFoundation);
-                }
-            }
-            else if (_pileSource.IsTableau && _pileTarget.IsFoundation)
-            {
-                _pointsService.Add(_gameConfig.PointsTableauToFoundation);
-            }
-            else if (_pileSource.IsFoundation && _pileTarget.IsTableau)
-            {
-                _pointsService.Add(_gameConfig.PointsFoundationToTableau);
-            }
 
             _audioService.PlaySfx(Audio.SfxDraw, 0.5f);
 
@@ -63,7 +43,6 @@ namespace Solitaire.Commands
             {
                 cardBelow.Flip();
                 _wasTopCardFlipped = true;
-                _pointsService.Add(_gameConfig.PointsTurnOverTableauCard);
             }
 
             
@@ -79,29 +58,9 @@ namespace Solitaire.Commands
                 cardTop != null && cardTop.IsFaceUp.Value)
             {
                 cardTop.Flip();
-                _pointsService.Add(-_gameConfig.PointsTurnOverTableauCard);
             }
 
-            // Scoring
-            if (_pileSource.IsWaste)
-            {
-                if (_pileTarget.IsTableau)
-                {
-                    _pointsService.Add(-_gameConfig.PointsWasteToTableau);
-                }
-                else if (_pileTarget.IsFoundation)
-                {
-                    _pointsService.Add(-_gameConfig.PointsWasteToFoundation);
-                }
-            }
-            else if (_pileSource.IsTableau && _pileTarget.IsFoundation)
-            {
-                _pointsService.Add(-_gameConfig.PointsTableauToFoundation);
-            }
-            else if (_pileSource.IsFoundation && _pileTarget.IsTableau)
-            {
-                _pointsService.Add(-_gameConfig.PointsFoundationToTableau);
-            }
+            
 
             _audioService.PlaySfx(Audio.SfxDraw, 0.5f);
 

@@ -104,8 +104,6 @@ namespace Solitaire.Presenters
                     else
                     {
                         Pile.Cards.ElementAt(i).IsInStack = false;
-                        //Pile.Cards.ElementAt(i).IsInteractable.Value = false;
-                        //Pile.Cards.ElementAt(i).IsMoveable.Equals(false);
                     }
                 }
             }

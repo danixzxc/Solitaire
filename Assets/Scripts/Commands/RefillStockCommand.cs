@@ -30,7 +30,6 @@ namespace Solitaire.Commands
             if (!_options.DrawThree.Value)
             {
                 _points = _pointsService.Points.Value;
-                _pointsService.Add(_gameConfig.PointsRecycleWaste);
             }
 
             _audioService.PlaySfx(Audio.SfxDraw, 0.5f);

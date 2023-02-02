@@ -320,7 +320,7 @@ namespace Solitaire.Models
 
                     for (int j = 0; j < pileTableau.Cards.Count; j++)
                     {
-                        pileTableau.Cards.ElementAt(j).Flip();
+                        //pileTableau.Cards.ElementAt(j).Flip();
                         pileTableau.Cards.ElementAt(j).IsInteractable.Value = false;
                     }
 
