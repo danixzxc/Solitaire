@@ -1,4 +1,5 @@
 using UniRx;
+using Zenject;
 
 namespace Solitaire.Services
 {
@@ -6,9 +7,12 @@ namespace Solitaire.Services
     {
         public IntReactiveProperty Moves { get; private set; } = new IntReactiveProperty();
 
+        [Inject] private readonly IPointsService _points;
+
         public void Increment()
         {
             Moves.Value += 1;
+            _points.Add(-10);
         }
 
         public void Reset()

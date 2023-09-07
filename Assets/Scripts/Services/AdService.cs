@@ -3,8 +3,10 @@ using Zenject;
 
 namespace Solitaire.Services
 {
+    /*
     public class AdService : IInitializable, IUnityAdsInitializationListener, IAdService
     {
+        
 #if UNITY_ANDROID
         string _gameId = "4848282";
         string _placementId = "Banner_Android";
@@ -57,4 +59,5 @@ namespace Solitaire.Services
             Advertisement.Banner.Hide();
         }
     }
+    */
 }

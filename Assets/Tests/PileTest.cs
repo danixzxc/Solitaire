@@ -136,7 +136,7 @@ namespace Solitaire.Tests
         [TestCase(Pile.PileType.Tableau)]
         public void Should_ReturnFalse_When_TryingToAddCardToTheWrongPileOrConditionsAreNotMet(Pile.PileType type)
         {
-            _card.Init(Card.Suits.Spade, Card.Types.Two);
+            _card.Init(Card.Suits.Spade, Card.Types.Six);
             _pile.Init(type, Pile.CardArrangement.Stack, Vector3.zero);
 
             bool result = _pile.CanAddCard(_card);
@@ -147,7 +147,7 @@ namespace Solitaire.Tests
         [Test]
         public void Should_ReturnTrue_When_TryingToAddAnAceToAnEmptyFoundationPile()
         {
-            _card.Init(Card.Suits.Spade, Card.Types.Ace);
+            _card.Init(Card.Suits.Spade, Card.Types.King);
             _pile.Init(Pile.PileType.Foundation, Pile.CardArrangement.Stack, Vector3.zero);
 
             bool result = _pile.CanAddCard(_card);
@@ -159,14 +159,14 @@ namespace Solitaire.Tests
         public void Should_ReturnTrue_When_TryingToAddATopCardOfTheSameSuitAndHigherTypeToAFoundationPile()
         {
             var card1 = new Card();
-            card1.Init(Card.Suits.Spade, Card.Types.Ace);
+            card1.Init(Card.Suits.Spade, Card.Types.King);
 
             var pileFoundation = new Pile();
             pileFoundation.Init(Pile.PileType.Foundation, Pile.CardArrangement.Stack, Vector3.zero);
             pileFoundation.AddCard(card1);
 
             var card2 = new Card();
-            card2.Init(Card.Suits.Spade, Card.Types.Two);
+            card2.Init(Card.Suits.Spade, Card.Types.Six);
 
             var pileTableau = new Pile();
             pileTableau.Init(Pile.PileType.Tableau, Pile.CardArrangement.Waterfall, Vector3.zero);

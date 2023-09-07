@@ -32,11 +32,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 4dbde7c7f6bcf0b42824e9b779fd1dfe, type: 3}
     - {fileID: 21300000, guid: 01eefc40193f959478d13cd25b298a67, type: 3}
     TypeSprites:
-    - {fileID: 21300000, guid: bfa3036e16836e24e90c66d00c54438b, type: 3}
-    - {fileID: 21300000, guid: cca028ad0bca34d4d8924e143aeac0f3, type: 3}
-    - {fileID: 21300000, guid: 493f90928a850be449d8ec7a3b7fcd22, type: 3}
-    - {fileID: 21300000, guid: 6631d87466713a54c92581b94119ec3e, type: 3}
-    - {fileID: 21300000, guid: 4fc1b756c67ee0b48bd5ff3523786f6e, type: 3}
     - {fileID: 21300000, guid: a028afc93fc3c9b4a9f0ceef1229458e, type: 3}
     - {fileID: 21300000, guid: 4a8f59cb4c219ca409e2f56f3bf286be, type: 3}
     - {fileID: 21300000, guid: 9e1a9309e87facd4999623aae9eba20c, type: 3}
@@ -46,7 +41,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1303b1693f3257d45b7ce407bc1fdec7, type: 3}
     - {fileID: 21300000, guid: 38de620951d510c4dbfd223e1e11d2d7, type: 3}
   _audio:
-    MusicVolume: 0.2
     AudioClips:
     - {fileID: 8300000, guid: 11335588942bbd5449bd5e612908f09c, type: 3}
     - {fileID: 8300000, guid: d372c3c1265b3428b93b791dd44035a1, type: 3}

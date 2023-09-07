@@ -19,7 +19,7 @@ namespace Solitaire.Services
 
         public void Reset()
         {
-            Set(0);
+            Set(1000);
         }
     }
 }

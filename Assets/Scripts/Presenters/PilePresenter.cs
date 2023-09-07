@@ -1,5 +1,6 @@
 using Solitaire.Models;
 using Solitaire.Services;
+using System.Linq;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -67,5 +68,46 @@ namespace Solitaire.Presenters
             transform.position = position;
             _pile.UpdatePosition(position);
         }
+
+        private void Update()
+        {
+            if (Pile.Cards.Count == 8 && Pile.Type == Pile.PileType.Tableau)
+
+                for (int i = 0; i < Pile.Cards.Count; i++)
+                {
+                    if (Pile.Cards.ElementAt(i).IsInStack == false || Pile.Cards.ElementAt(i).IsInteractable.Value == false)
+                    {
+                        break;
+                    }
+                    if (i == Pile.Cards.Count - 2)
+                    {
+                        for (int j = 0; j < Pile.Cards.Count; j++)
+                        {
+
+                            Pile.Cards.ElementAt(j).Flip();
+                            Pile.Cards.ElementAt(j).IsInteractable.Value = false;
+                        }
+                    }
+                }
+
+            for (int i = Pile.Cards.Count - 1; i >= 0; i--)
+            {
+                if (Pile.Cards.ElementAt(i).IsOnTop) Pile.Cards.ElementAt(i).IsInStack = true;
+                else
+
+                {
+                    if (Pile.Cards.ElementAt(i).Type == Pile.Cards.ElementAt(i + 1).Type + 1 &&
+                        Pile.Cards.ElementAt(i + 1).IsInStack == true &&
+                        (((int)Pile.Cards.ElementAt(i).Suit / 2 == 0 && (int)Pile.Cards.ElementAt(i + 1).Suit / 2 == 1) ||
+                        ((int)Pile.Cards.ElementAt(i).Suit / 2 == 1 && (int)Pile.Cards.ElementAt(i + 1).Suit / 2 == 0)))
+                        Pile.Cards.ElementAt(i).IsInStack = true;
+                    else
+                    {
+                        Pile.Cards.ElementAt(i).IsInStack = false;
+                    }
+                }
+            }
+        }
+           
     }
 }

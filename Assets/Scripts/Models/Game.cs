@@ -156,9 +156,9 @@ namespace Solitaire.Models
 
                 for (int j = 0; j < pileTableau.Cards.Count; j++)
                 {
-                    if (!pileTableau.Cards[j].IsFaceUp.Value)
+                    if (pileTableau.Cards[j].IsFaceUp.Value)
                     {
-                        return;
+                        return; //all cards should be FACED DOWN to win in this version
                     }
                 }
             }
@@ -168,6 +168,7 @@ namespace Solitaire.Models
             {
                 return;
             }
+            _gameState.State.Value = Game.State.Win;
 
             WinAsync().Forget();
         }
@@ -280,14 +281,14 @@ namespace Solitaire.Models
             // Deal cards to the Tableau piles
             for (int i = 0; i < PileTableaus.Count; i++)
             {
-                for (int j = 0; j < i + 1; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     Card topCard = PileStock.TopCard();
                     PileTableaus[i].AddCard(topCard);
 
                     if (j == i)
                     {
-                        topCard.Flip();
+                        //topCard.Flip();
                     }
 
                     await UniTask.DelayFrame(3);
@@ -305,7 +306,7 @@ namespace Solitaire.Models
             HasStarted.Value = false;
 
             int cardsInTableaus;
-
+/*
             do
             {
                 cardsInTableaus = 0;
@@ -317,11 +318,18 @@ namespace Solitaire.Models
                     Card topCard = pileTableau.TopCard();
                     cardsInTableaus += pileTableau.Cards.Count;
 
+                    for (int j = 0; j < pileTableau.Cards.Count; j++)
+                    {
+                        //pileTableau.Cards.ElementAt(j).Flip();
+                        pileTableau.Cards.ElementAt(j).IsInteractable.Value = false;
+                    }
+
                     // Skip empty pile
                     if (topCard == null)
                     {
                         continue;
                     }
+                        
 
                     // Skip card that cannot be moved to a foundation pile
                     Pile pileFoundation = _hintService.CheckPilesForMove(PileFoundations, topCard);
@@ -338,7 +346,7 @@ namespace Solitaire.Models
 
             }
             while (cardsInTableaus > 0);
-
+*/
             AddPointsAndSaveLeaderboard();
         }
 

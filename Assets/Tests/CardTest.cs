@@ -92,7 +92,7 @@ namespace Solitaire.Tests
         public void Should_SetSuitAndType_When_Initialized()
         {
             Card.Suits suit = Card.Suits.Spade;
-            Card.Types type = Card.Types.Ace;
+            Card.Types type = Card.Types.King;
 
             _card.Init(suit, type);
 
@@ -124,7 +124,7 @@ namespace Solitaire.Tests
         public void Should_NotChangeSuitAndType_When_Reseted()
         {
             Card.Suits suit = Card.Suits.Spade;
-            Card.Types type = Card.Types.Ace;
+            Card.Types type = Card.Types.King;
 
             _card.Init(suit, type);
             _card.Reset(Vector3.zero);
@@ -154,11 +154,7 @@ namespace Solitaire.Tests
         }
 
         [Test]
-        [TestCase(Card.Types.Two, 2)]
-        [TestCase(Card.Types.Three, 3)]
-        [TestCase(Card.Types.Four, 4)]
-        [TestCase(Card.Types.Five, 5)]
-        [TestCase(Card.Types.Six, 6)]
+        
         [TestCase(Card.Types.Seven, 7)]
         [TestCase(Card.Types.Eight, 8)]
         [TestCase(Card.Types.Nine, 9)]
@@ -166,7 +162,6 @@ namespace Solitaire.Tests
         [TestCase(Card.Types.Jack, 10)]
         [TestCase(Card.Types.Queen, 10)]
         [TestCase(Card.Types.King, 10)]
-        [TestCase(Card.Types.Ace, 11)]
         public void Should_ReturnCorrectValue_When_TypeIsSet(Card.Types type, int expected)
         {
             _card.Init(Card.Suits.Spade, type);

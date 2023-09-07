@@ -21,7 +21,7 @@ namespace Solitaire.Models
         }
 
         public PileType Type { get; private set; }
-        public CardArrangement Arrangement { get; private set; }
+        public CardArrangement Arrangement { get; set; }
         public Vector3 Position { get; private set; }
         public List<Card> Cards { get; private set; }
 
@@ -83,13 +83,7 @@ namespace Solitaire.Models
                     return false;
 
                 case PileType.Foundation:
-                    if (topCard == null && card.Type == Card.Types.Ace)
-                    {
-                        return true;
-                    }
-
-                    if (topCard != null && topCard.Suit == card.Suit &&
-                        topCard.Type == card.Type - 1 && card.IsOnTop)
+                    if (topCard == null && card.IsOnTop)
                     {
                         return true;
                     }
@@ -97,12 +91,13 @@ namespace Solitaire.Models
                     return false;
 
                 case PileType.Tableau:
-                    if (topCard == null && card.Type == Card.Types.King)
+                    if (topCard == null && card.IsInStack)
                     {
                         return true;
                     }
 
                     if (topCard != null && topCard.Type == card.Type + 1 &&
+                        card.IsInStack == true &&
                         (((int)topCard.Suit / 2 == 0 && (int)card.Suit / 2 == 1) ||
                         ((int)topCard.Suit / 2 == 1 && (int)card.Suit / 2 == 0)))
                     {
