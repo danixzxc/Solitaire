@@ -38,14 +38,13 @@ namespace Solitaire.Installers
             Container.BindInterfacesAndSelfTo<HintService>().AsSingle();
             Container.BindInterfacesAndSelfTo<OrientationService>().AsSingle();
             Container.BindInterfacesAndSelfTo<AudioService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<AdService>().AsSingle();
             Container.BindInterfacesAndSelfTo<StorageService>().AsSingle();
         }
 
         void InstallGame()
         {
             Container.Bind<Game>().AsSingle();
-            Container.Bind<GameState>().AsSingle();
+            Container.Bind<GameState>().AsSingle(); 
             Container.Bind<GamePopup>().AsSingle();
             Container.Bind<GameControls>().AsSingle();
             Container.Bind<OrientationState>().AsSingle();
